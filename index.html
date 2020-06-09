@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link type="text/css" rel="stylesheet" href="style.css">
+
+    <title>PokeAPI</title>
+</head>
+
+<body>
+
+
+
+    <div class="container">
+        <div class="section laranja">
+
+            <!--   Icon Section   -->
+            <div class="row">
+                <div class="col s12 m6">
+                    <div class="icon-block">
+                        <nav>
+                            <div class="nav-wrapper yellow darken-4 blue-text">
+                                <div class="row">
+                                    <div class="col s12">
+                                        <div class="row">
+                                            <div class="input-field col s9 blue-text">
+                                                <input type="text" id="pesquisaPokemon"
+                                                    class="autocomplete yellow-text">
+                                                <label class="yellow-text" for="pesquisaPokemon">Pesquise um
+                                                    Pokemón</label>
+                                            </div>
+                                            <a class="waves-effect yellow darken-4 btn-small yellow-text" onclick="dadosParaPesquisa()">Ok</a>
+                                        </div>
+                                    </div>
+                                </div>
+                        </nav>
+
+                        <h3 id="nomePokemon" class="center nomePokemon">Pikachu</h3>
+                        <ul class="descricaoPokemon">
+                            <li id="tipo" class="light"><h6>TIPO: </h6></li>
+                            <li id="habilidade" class="light"><h6>HABIBIDADE:</h6></li>
+                            <li id="danos"class="light"><h6>DANOS:</h6> </li>
+                        </ul>
+
+                    </div>
+                </div>
+
+                <div class="col s12 m6">
+                    <div class="icon-block">
+                        <div class="row">
+                            <div class="col s12 m11">
+                                <div class="card img-pokemons">
+                                    <div class="card-image">
+                                        <img src="./img/pikachu.png">
+                                        <span class="card-title">Card Title</span>
+                                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i
+                                                class="material-icons">add</i></a>
+                                    </div>
+                                    <div class="card-content" id="descricao">
+                                        <p>I am a very simple card. I am good at containing small bits of information. I
+                                            am convenient because I require little markup to use effectively.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+    <footer class="page-footer teal">
+        <div class="footer-copyright">
+            <div class="row">
+                <p>Site criado por Bruna</p>
+
+            </div>
+
+    </footer>
+
+
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="../../dist/js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>

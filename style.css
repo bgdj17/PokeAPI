@@ -1,0 +1,21 @@
+body{
+    background-image: url(./img/420248.jpg);
+    background-position: bottom;
+}
+.laranja{
+    background-color: rgb(255, 115, 0);
+    border-radius: 1em;
+}
+.img-pokemons{
+    border-radius: 1em;
+}
+.cor-pesquisa{
+    background-color: rgba(rgb(255, 206, 166));
+}
+input{
+    border-radius: 2em;
+}
+.nav-wrapper{
+    padding: 1%;
+    height: auto;
+}
