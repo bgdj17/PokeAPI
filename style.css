@@ -1,11 +1,14 @@
 body{
     background-image: url(./img/420248.jpg);
     background-position: bottom;
-    color: rgb(226, 222, 220);
     font-family: 'Changa', sans-serif;
     
-   
+    /* font-family: 'Share Tech Mono', monospace; */
+   letter-spacing: 1px;
     
+}
+h6{
+    line-height: 1em
 }
 .laranja{
     background-color: rgb(255, 115, 0);
@@ -21,9 +24,7 @@ input{
     border-radius: 2em;
     background-color: rgb(236, 108, 3);
 }
-.icon-block{
-    padding-left: 2em;
-}
+
 #descricao{
     color: rgb(17, 16, 16);
 }
@@ -31,5 +32,6 @@ input{
     padding-left: 2em;
 }
 .nomePokemon{
-    text-shadow: 2px 0.5px black;
+    /* text-shadow: 2px 0.5px black; */
+    /* font-family: 'Press Start 2P', cursive; */
 }

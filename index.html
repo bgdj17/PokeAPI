@@ -16,8 +16,8 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;700;800&family=Lalezar&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@500;700&family=Montserrat+Alternates:wght@100&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style.css">
 
     <title>PokeAPI</title>
@@ -39,47 +39,48 @@
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="row">
-                                            <div class="input-field col s9 blue-text">
+                                            <div class="input-field col blue-text">
                                                 <input type="text" id="pesquisaPokemon"
                                                     class="autocomplete yellow-text">
                                                 <label class="yellow-text" for="pesquisaPokemon">Pesquise um
                                                     Pokemón</label>
                                             </div>
                                             <a class="waves-effect amber darken-4 btn-small yellow-text"
-                                                onclick="dadosParaPesquisa()">Ok</a>
+                                                id="btnPesquisaPokemon" onclick="dadosParaPesquisa()">Ok</a>
                                         </div>
                                     </div>
                                 </div>
                         </nav>
 
-                        <h2 id="nomePokemon" class="center nomePokemon">Pikachu</h2>
-                        <ul class="descricaoPokemon">
+                        <h2 id="nomePokemon" class="center nomePokemon blue-text text-lighten-5">Pikachu</h2>
+                        <br>
+                        <ul class="descricaoPokemon white-text">
                             <li id="tipo" class="light">
-                                <h5>TIPO: </h6>
+                                <h6>TIPO: </h6>
                             </li>
                             <li id="habilidade" class="light">
-                                <h5>HABILIDADE:</h5>
+                                <h6>HABILIDADE:</h6>
                             </li>
-                            <br>
+                            
                             <li id="danosDF" class="light">
-                                <h5>DOUBLE DAMAGE FROM:</h5>
+                                <h6>DOUBLE DAMAGE FROM:</h6>
                             </li>
                             <li id="danosDT" class="light">
-                                <h5>DOUBLE DAMAGE TO:</h5>
+                                <h6>DOUBLE DAMAGE TO:</h6>
                             </li>
-                            <br>
+                            
                             <li id="danosHF" class="light">
-                                <h5>HALF DAMAGE FROM</h5>
+                                <h6>HALF DAMAGE FROM</h6>
                             </li>
                             <li id="danosHT" class="light">
-                                <h5>HALF DAMAGE TO:</h5>
+                                <h6>HALF DAMAGE TO:</h6>
                             </li>
-                            <br>
+                            
                             <li id="noDanosF" class="light">
-                                <h5>NO DAMAGE FROM:</h5>
+                                <h6>NO DAMAGE FROM:</h6>
                             </li>
                             <li id="noDanosT" class="light">
-                                <h5>NO DAMAGE TO:</h5>
+                                <h6>NO DAMAGE TO:</h6>
                             </li>
 
 
@@ -95,7 +96,7 @@
                                 <div class="card img-pokemons">
                                     <div class="card-image">
                                         <img id="pokemonImg" src="./img/pikachu.png">
-                                        <span class="card-title">Card Title</span>
+                                        <span id="pokeId"class="card-title black-text">Card Title</span>
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i
                                                 class="material-icons">add</i></a>
                                     </div>
@@ -114,6 +115,13 @@
 
         </div>
     </div>
+    <!-- <div class="carousel">
+        <a class="carousel-item" href="#one!"><img id="carouselImg" src="https://lorempixel.com/250/250/nature/1"></a>
+        <a class="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"></a>
+        <a class="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"></a>
+        <a class="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"></a>
+        <a class="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"></a>
+      </div> -->
 
 
     <footer class="page-footer teal">
