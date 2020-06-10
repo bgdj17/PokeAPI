@@ -2,9 +2,7 @@ body{
     background-image: url(./img/420248.jpg);
     background-position: bottom;
     font-family: 'Changa', sans-serif;
-    
-    /* font-family: 'Share Tech Mono', monospace; */
-   letter-spacing: 1px;
+    letter-spacing: 1px;
     
 }
 h6{
@@ -31,7 +29,4 @@ input{
 .descricaoPokemon{
     padding-left: 2em;
 }
-.nomePokemon{
-    /* text-shadow: 2px 0.5px black; */
-    /* font-family: 'Press Start 2P', cursive; */
-}
+

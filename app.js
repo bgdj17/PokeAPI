@@ -3,13 +3,18 @@ var resultadoPesquisaObj = { nome: '',id:'', tipo: '', habilidades: '', descrica
 function dadosParaPesquisa() {
     var pesquisaPokemon = document.getElementById('pesquisaPokemon').value;
     var pokeDescHab = ''
+    var idPokemon = ''
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pesquisaPokemon.toLowerCase()}`)
         .then((resposta) => {
             // nome e ID do Pokemón
             var pokeNome = resposta.data.name
             resultadoPesquisaObj.nome = pokeNome
-            var idPokemon = resposta.data.id
+            idPokemon = resposta.data.id
             resultadoPesquisaObj.id = idPokemon
+            var numId = ""
+            num =idPokemon.toString()
+            console.log(num.padStart(3,0))
+         
             // habilidades do Pokemón
             var pokeHabilidades = resposta.data.abilities
             var habilidades = []
@@ -29,7 +34,7 @@ function dadosParaPesquisa() {
             }
             
             // Imagem Pokemóm
-            document.getElementById("pokemonImg").src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${idPokemon}.png`
+            document.getElementById("pokemonImg").src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${num.padStart(3,0)}.png`
 
             //  tipo
             var pokeTipo = resposta.data.types
@@ -99,9 +104,9 @@ function mostrarNoDoc(nome, tipo, habilidade, id) {
     var caminhoNome = document.getElementById("nomePokemon")
     caminhoNome.innerHTML = `<h2>${capitalize(nome)}</h2>`
     var caminhoTipo = document.getElementById("tipo")
-    caminhoTipo.innerHTML = `<h6>TIPO: ${tipo}</h6>`
+    caminhoTipo.innerHTML = `<p>TIPO: ${tipo}</p>`
     var caminhoHabilidade = document.getElementById("habilidade")
-    caminhoHabilidade.innerHTML = `<h6>HABILIDADE: ${habilidade}</h6>`
+    caminhoHabilidade.innerHTML = `<p>HABILIDADE: ${habilidade}</p>`
     var caminhoIdPoke = document.getElementById("pokeId")
     caminhoIdPoke.innerHTML = id
 }
@@ -111,7 +116,7 @@ function mostrarDescricao(descricao) {
 }
 function mostrarDanos(damage, id, texto) {
     var caminhoDanos = document.getElementById(id)
-    caminhoDanos.innerHTML = `<h6>${texto}: ${damage}</h6>`
+    caminhoDanos.innerHTML = `<p>${texto}: ${damage}</p>`
 }
 function capitalize(texto) {
     return texto.charAt(0).toUpperCase() + texto.slice(1)
