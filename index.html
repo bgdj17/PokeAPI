@@ -16,6 +16,8 @@
 
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Changa:wght@200;300;400;700;800&family=Lalezar&display=swap"
+        rel="stylesheet">
     <link type="text/css" rel="stylesheet" href="style.css">
 
     <title>PokeAPI</title>
@@ -33,7 +35,7 @@
                 <div class="col s12 m6">
                     <div class="icon-block">
                         <nav>
-                            <div class="nav-wrapper yellow darken-4 blue-text">
+                            <div class="nav-wrapper amber darken-4 blue-text">
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="row">
@@ -43,17 +45,44 @@
                                                 <label class="yellow-text" for="pesquisaPokemon">Pesquise um
                                                     Pokemón</label>
                                             </div>
-                                            <a class="waves-effect yellow darken-4 btn-small yellow-text" onclick="dadosParaPesquisa()">Ok</a>
+                                            <a class="waves-effect amber darken-4 btn-small yellow-text"
+                                                onclick="dadosParaPesquisa()">Ok</a>
                                         </div>
                                     </div>
                                 </div>
                         </nav>
 
-                        <h3 id="nomePokemon" class="center nomePokemon">Pikachu</h3>
+                        <h2 id="nomePokemon" class="center nomePokemon">Pikachu</h2>
                         <ul class="descricaoPokemon">
-                            <li id="tipo" class="light"><h6>TIPO: </h6></li>
-                            <li id="habilidade" class="light"><h6>HABIBIDADE:</h6></li>
-                            <li id="danos"class="light"><h6>DANOS:</h6> </li>
+                            <li id="tipo" class="light">
+                                <h5>TIPO: </h6>
+                            </li>
+                            <li id="habilidade" class="light">
+                                <h5>HABILIDADE:</h5>
+                            </li>
+                            <br>
+                            <li id="danosDF" class="light">
+                                <h5>DOUBLE DAMAGE FROM:</h5>
+                            </li>
+                            <li id="danosDT" class="light">
+                                <h5>DOUBLE DAMAGE TO:</h5>
+                            </li>
+                            <br>
+                            <li id="danosHF" class="light">
+                                <h5>HALF DAMAGE FROM</h5>
+                            </li>
+                            <li id="danosHT" class="light">
+                                <h5>HALF DAMAGE TO:</h5>
+                            </li>
+                            <br>
+                            <li id="noDanosF" class="light">
+                                <h5>NO DAMAGE FROM:</h5>
+                            </li>
+                            <li id="noDanosT" class="light">
+                                <h5>NO DAMAGE TO:</h5>
+                            </li>
+
+
                         </ul>
 
                     </div>
@@ -65,7 +94,7 @@
                             <div class="col s12 m11">
                                 <div class="card img-pokemons">
                                     <div class="card-image">
-                                        <img src="./img/pikachu.png">
+                                        <img id="pokemonImg" src="./img/pikachu.png">
                                         <span class="card-title">Card Title</span>
                                         <a class="btn-floating halfway-fab waves-effect waves-light red"><i
                                                 class="material-icons">add</i></a>
@@ -90,7 +119,7 @@
     <footer class="page-footer teal">
         <div class="footer-copyright">
             <div class="row">
-                <p>Site criado por Bruna</p>
+                <p> Copyright © 2020 Bruna Jesus</p>
 
             </div>
 

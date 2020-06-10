@@ -1,6 +1,11 @@
 body{
     background-image: url(./img/420248.jpg);
     background-position: bottom;
+    color: rgb(226, 222, 220);
+    font-family: 'Changa', sans-serif;
+    
+   
+    
 }
 .laranja{
     background-color: rgb(255, 115, 0);
@@ -10,12 +15,21 @@ body{
     border-radius: 1em;
 }
 .cor-pesquisa{
-    background-color: rgba(rgb(255, 206, 166));
+    background-color: rgb(255, 115, 0);
 }
 input{
     border-radius: 2em;
+    background-color: rgb(236, 108, 3);
 }
-.nav-wrapper{
-    padding: 1%;
-    height: auto;
+.icon-block{
+    padding-left: 2em;
+}
+#descricao{
+    color: rgb(17, 16, 16);
+}
+.descricaoPokemon{
+    padding-left: 2em;
+}
+.nomePokemon{
+    text-shadow: 2px 0.5px black;
 }
