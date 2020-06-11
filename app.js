@@ -58,39 +58,44 @@ function dadosParaPesquisa() {
                             doubleDamageFromName.push(doubleDamageFrom[i].name)
                             console.log(`Para o tipo: ${tipo[i]} DOUBLE DAMAGE FROM: ${doubleDamageFromName}`)
                         } 
-                        mostrarDanos(doubleDamageFromName, "danosDF", "Double Damage From")
+                        var doubleDamageFromNameJoin= doubleDamageFromName.join(', ')
+                        mostrarDanos(doubleDamageFromNameJoin, "danosDF", "Double Damage From")
                         // -------
                         var doubleDamageTo = resposta.data.damage_relations.double_damage_to
                         for (var i = 0; i < doubleDamageTo.length; i++) {
-                            doubleDamageToResult.push(doubleDamageTo[i].name)
+                            doubleDamageToResult.push(doubleDamageTo[i].name)                          
                         } console.log(`DOUBLE DAMAGE TO: ${doubleDamageToResult}`)
-                        mostrarDanos(doubleDamageToResult, "danosDT", "Double Damage To")
+                        var doubleDamageToResultJoin = doubleDamageToResult.join(', ')
+                        mostrarDanos(doubleDamageToResultJoin, "danosDT", "Double Damage To")
                         // ------                
                         var halfDamageFrom = resposta.data.damage_relations.half_damage_from
                         for (var i = 0; i < halfDamageFrom.length; i++) {
                             halfDamageFromResult.push(halfDamageFrom[i].name)
                         } console.log(`HALF DAMAGE FROM:" ${halfDamageFromResult}`)
-                        mostrarDanos(halfDamageFromResult, "danosHF", "Half Damage From")
+                        var halfDamageFromResultJoin = halfDamageFromResult.join(', ') 
+                        mostrarDanos(halfDamageFromResultJoin, "danosHF", "Half Damage From")
 
                         // -------
                         var halfDamageTo = resposta.data.damage_relations.half_damage_to
                         for (var i = 0; i < halfDamageTo.length; i++) {
                             halfDamageToResult.push(halfDamageTo[i].name)
                         } console.log(`HALF DAMAGE TO: ${halfDamageToResult}`)
-                        mostrarDanos(halfDamageToResult, "danosHT", "Half Damage To")
-
+                        var halfDamageToResultJoin = halfDamageToResult.join(', ')
+                        mostrarDanos(halfDamageToResultJoin, "danosHT", "Half Damage To")
                         // ------
                         var noDamageFrom = resposta.data.damage_relations.no_damage_from
                         for (var i = 0; i < noDamageFrom.length; i++) {
                             noDamageFromResult.push(noDamageFrom[i].name)
                         } console.log(`NO DAMAGE FROM: ${noDamageFromResult}`)
-                        mostrarDanos(noDamageFromResult, "noDanosF", "No Damage From")
+                        var noDamageFromResultJoin = noDamageFromResult.join(', ')
+                        mostrarDanos(noDamageFromResultJoin, "noDanosF", "No Damage From")
 
                         // ---
                         var noDamageTo = resposta.data.damage_relations.no_damage_to
                         for (var i = 0; i < noDamageTo.length; i++) {
                             noDamageToResult.push(noDamageTo[i].name)
                         } console.log(`NO DAMAGE TO: ${noDamageToResult}`)
+                        var noDamageToResultJoin= noDamageToResult.join(', ')
                         mostrarDanos(noDamageToResult, "noDanosT", "NO DAMAGE TO")
                     })
             }
@@ -102,11 +107,11 @@ function dadosParaPesquisa() {
 }
 function mostrarNoDoc(nome, tipo, habilidade, id) {
     var caminhoNome = document.getElementById("nomePokemon")
-    caminhoNome.innerHTML = `<h2>${capitalize(nome)}</h2>`
+    caminhoNome.innerHTML = `<h3>${capitalize(nome)}</h3>`
     var caminhoTipo = document.getElementById("tipo")
-    caminhoTipo.innerHTML = `<p>TIPO: ${tipo}</p>`
+    caminhoTipo.innerHTML = `TIPO: ${tipo}`
     var caminhoHabilidade = document.getElementById("habilidade")
-    caminhoHabilidade.innerHTML = `<p>HABILIDADE: ${habilidade}</p>`
+    caminhoHabilidade.innerHTML = `HABILIDADE: ${habilidade}`
     var caminhoIdPoke = document.getElementById("pokeId")
     caminhoIdPoke.innerHTML = id
 }
@@ -116,7 +121,7 @@ function mostrarDescricao(descricao) {
 }
 function mostrarDanos(damage, id, texto) {
     var caminhoDanos = document.getElementById(id)
-    caminhoDanos.innerHTML = `<p>${texto}: ${damage}</p>`
+    caminhoDanos.innerHTML = `${texto.toUpperCase()}: ${damage}`
 }
 function capitalize(texto) {
     return texto.charAt(0).toUpperCase() + texto.slice(1)

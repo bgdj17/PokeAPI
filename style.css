@@ -1,9 +1,12 @@
+@font-face{
+    font-family: "Pokemon Classic";
+    src: url(./font/Pokemon\ Classic.ttf)
+}
 body{
     background-image: url(./img/420248.jpg);
     background-position: bottom;
-    font-family: 'Changa', sans-serif;
     letter-spacing: 1px;
-    
+    font-size: 1.2em;       
 }
 h6{
     line-height: 1em
@@ -26,7 +29,14 @@ input{
 #descricao{
     color: rgb(17, 16, 16);
 }
-.descricaoPokemon{
-    padding-left: 2em;
+
+.nomePokemon{
+    font-family: "Pokemon Classic";
+}
+.img-pokemons{
+    font-family: 'Changa', sans-serif;
 }
 
+li{
+    padding-top: 5px;
+}
