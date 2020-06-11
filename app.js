@@ -1,9 +1,29 @@
-var resultadoPesquisaObj = { nome: '',id:'', tipo: '', habilidades: '', descricao: ''}
-
+var resultadoPesquisaObj = { nome: '', id: '', tipo: '', habilidades: '', descricao: '' }
+// Autocomplete
+var pokeImagens = {}
+var pokemons ={}
+document.addEventListener('DOMContentLoaded', function () {
+    axios.get(`https://pokeapi.co/api/v2/pokemon?limit=251`)
+        .then((resposta) => {
+            pokemons = resposta.data.results;
+            var primeiroPoke = pokemons[Math.floor(Math.random() * pokemons.length)];
+            pokemons.forEach(poke => {
+                var split = poke.url.split('/');
+                var num = split[split.length - 2];
+                var url = 'http://assets.pokemon.com/assets/cms2/img/pokedex/full/' + num.padStart(3, "0") + ".png";
+                pokeImagens[poke.name] = url
+            });
+            dadosParaPesquisa()
+        });
+    var elems = document.querySelectorAll('.autocomplete');
+    var instances = M.Autocomplete.init(elems, { data: pokeImagens });
+})
+// ----
 function dadosParaPesquisa() {
     var pesquisaPokemon = document.getElementById('pesquisaPokemon').value;
     var pokeDescHab = ''
     var idPokemon = ''
+    // Autocomplete
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pesquisaPokemon.toLowerCase()}`)
         .then((resposta) => {
             // nome e ID do Pokemón
@@ -12,9 +32,8 @@ function dadosParaPesquisa() {
             idPokemon = resposta.data.id
             resultadoPesquisaObj.id = idPokemon
             var numId = ""
-            num =idPokemon.toString()
-            console.log(num.padStart(3,0))
-         
+            num = idPokemon.toString()
+            
             // habilidades do Pokemón
             var pokeHabilidades = resposta.data.abilities
             var habilidades = []
@@ -32,9 +51,9 @@ function dadosParaPesquisa() {
                         resultadoPesquisaObj.descricao = pokeDescHab
                     });
             }
-            
+
             // Imagem Pokemóm
-            document.getElementById("pokemonImg").src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${num.padStart(3,0)}.png`
+            document.getElementById("pokemonImg").src = `https://assets.pokemon.com/assets/cms2/img/pokedex/full/${num.padStart(3, 0)}.png`
 
             //  tipo
             var pokeTipo = resposta.data.types
@@ -56,62 +75,60 @@ function dadosParaPesquisa() {
                         var doubleDamageFrom = resposta.data.damage_relations.double_damage_from
                         for (var i = 0; i < doubleDamageFrom.length; i++) {
                             doubleDamageFromName.push(doubleDamageFrom[i].name)
-                            console.log(`Para o tipo: ${tipo[i]} DOUBLE DAMAGE FROM: ${doubleDamageFromName}`)
-                        } 
-                        var doubleDamageFromNameJoin= doubleDamageFromName.join(', ')
-                        mostrarDanos(doubleDamageFromNameJoin, "danosDF", "Double Damage From")
+                            }
+                        var doubleDamageFromNameJoin = doubleDamageFromName.join(', ')
+                        mostrarDanos(doubleDamageFromNameJoin, "danosDF")
                         // -------
                         var doubleDamageTo = resposta.data.damage_relations.double_damage_to
                         for (var i = 0; i < doubleDamageTo.length; i++) {
-                            doubleDamageToResult.push(doubleDamageTo[i].name)                          
-                        } console.log(`DOUBLE DAMAGE TO: ${doubleDamageToResult}`)
+                            doubleDamageToResult.push(doubleDamageTo[i].name)
+                        } 
                         var doubleDamageToResultJoin = doubleDamageToResult.join(', ')
-                        mostrarDanos(doubleDamageToResultJoin, "danosDT", "Double Damage To")
+                        mostrarDanos(doubleDamageToResultJoin, "danosDT")
                         // ------                
                         var halfDamageFrom = resposta.data.damage_relations.half_damage_from
                         for (var i = 0; i < halfDamageFrom.length; i++) {
                             halfDamageFromResult.push(halfDamageFrom[i].name)
-                        } console.log(`HALF DAMAGE FROM:" ${halfDamageFromResult}`)
-                        var halfDamageFromResultJoin = halfDamageFromResult.join(', ') 
-                        mostrarDanos(halfDamageFromResultJoin, "danosHF", "Half Damage From")
+                        } 
+                        var halfDamageFromResultJoin = halfDamageFromResult.join(', ')
+                        mostrarDanos(halfDamageFromResultJoin, "danosHF")
 
                         // -------
                         var halfDamageTo = resposta.data.damage_relations.half_damage_to
                         for (var i = 0; i < halfDamageTo.length; i++) {
                             halfDamageToResult.push(halfDamageTo[i].name)
-                        } console.log(`HALF DAMAGE TO: ${halfDamageToResult}`)
+                        }
                         var halfDamageToResultJoin = halfDamageToResult.join(', ')
-                        mostrarDanos(halfDamageToResultJoin, "danosHT", "Half Damage To")
+                        mostrarDanos(halfDamageToResultJoin, "danosHT")
                         // ------
                         var noDamageFrom = resposta.data.damage_relations.no_damage_from
                         for (var i = 0; i < noDamageFrom.length; i++) {
                             noDamageFromResult.push(noDamageFrom[i].name)
-                        } console.log(`NO DAMAGE FROM: ${noDamageFromResult}`)
+                        }
                         var noDamageFromResultJoin = noDamageFromResult.join(', ')
-                        mostrarDanos(noDamageFromResultJoin, "noDanosF", "No Damage From")
+                        mostrarDanos(noDamageFromResultJoin, "noDanosF")
 
                         // ---
                         var noDamageTo = resposta.data.damage_relations.no_damage_to
                         for (var i = 0; i < noDamageTo.length; i++) {
                             noDamageToResult.push(noDamageTo[i].name)
-                        } console.log(`NO DAMAGE TO: ${noDamageToResult}`)
-                        var noDamageToResultJoin= noDamageToResult.join(', ')
-                        mostrarDanos(noDamageToResult, "noDanosT", "NO DAMAGE TO")
+                        }
+                        var noDamageToResultJoin = noDamageToResult.join(', ')
+                        mostrarDanos(noDamageToResultJoin, "noDanosT")
                     })
             }
             resultadoPesquisaObj.tipo = tipo
-            console.log(idPokemon)
             mostrarNoDoc(pokeNome, tipo, habilidades, resultadoPesquisaObj.id)
-            console.log(`NAME: ${pokeNome}, TYPE: ${tipo}, ABILITIES: ${habilidades}`)
+            resetInput()
         });
 }
 function mostrarNoDoc(nome, tipo, habilidade, id) {
     var caminhoNome = document.getElementById("nomePokemon")
     caminhoNome.innerHTML = `<h3>${capitalize(nome)}</h3>`
     var caminhoTipo = document.getElementById("tipo")
-    caminhoTipo.innerHTML = `TIPO: ${tipo}`
+    caminhoTipo.innerHTML = `${tipo}`
     var caminhoHabilidade = document.getElementById("habilidade")
-    caminhoHabilidade.innerHTML = `HABILIDADE: ${habilidade}`
+    caminhoHabilidade.innerHTML = `${habilidade}`
     var caminhoIdPoke = document.getElementById("pokeId")
     caminhoIdPoke.innerHTML = id
 }
@@ -119,16 +136,31 @@ function mostrarDescricao(descricao) {
     var caminhoDescricao = document.getElementById("descricao")
     caminhoDescricao.innerHTML = `<p>${descricao}</p>`
 }
-function mostrarDanos(damage, id, texto) {
+function mostrarDanos(damage, id) {
     var caminhoDanos = document.getElementById(id)
-    caminhoDanos.innerHTML = `${texto.toUpperCase()}: ${damage}`
+    caminhoDanos.innerHTML = `${damage}`
 }
 function capitalize(texto) {
     return texto.charAt(0).toUpperCase() + texto.slice(1)
 }
+function startModal() {
+    var elems = document.querySelectorAll('.autocomplete');
+    var instances = M.Autocomplete.init(elems, { data: pokeImagens });
+
+}
 var input = document.getElementById("pesquisaPokemon");
-    input.addEventListener("keydown", function (event) {
-        if (event.keyCode === 13) {
-            document.getElementById("btnPesquisaPokemon").click()
-        }
-    })
+input.addEventListener("keydown", function (event) {
+    if (event.keyCode === 13) {
+        document.getElementById("btnPesquisaPokemon").click()
+    }
+})
+document.addEventListener('DOMContentLoaded', function() {
+    var elems = document.querySelectorAll('.materialboxed');
+    var instances = M.Materialbox.init(elems, outDuration);
+  });
+  function resetInput(){
+    var pesquisaPokemon = document.getElementById('pesquisaPokemon')
+    pesquisaPokemon.value = ""
+  }
+  
+

@@ -19,9 +19,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Changa:wght@500;700&family=Montserrat+Alternates:wght@100&family=Press+Start+2P&display=swap"
         rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-    <link type="text/css" rel="stylesheet" href="style.css">
-
+        <link href="https://fonts.googleapis.com/css2?family=Balsamiq+Sans&display=swap" rel="stylesheet">
+        <link type="text/css" rel="stylesheet" href="style.css">
+        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
     <title>PokeAPI</title>
 </head>
 
@@ -37,15 +37,14 @@
                 <div class="col s12 m6">
                     <div class="icon-block">
                         <nav>
-                            <div class="nav-wrapper amber darken-4 blue-text">
+                            <div class="nav-wrapper amber darken-4 ">
                                 <div class="row">
                                     <div class="col s12">
                                         <div class="row">
-                                            <div class="input-field col blue-text">
-                                                <input type="text" id="pesquisaPokemon"
+                                            <div class="input-field col s9">
+                                                <input type="text" title="Insire um número ou nome para pesquisa" id="pesquisaPokemon"
                                                     class="autocomplete yellow-text">
-                                                <label class="yellow-text" for="pesquisaPokemon">Pesquise um
-                                                    Pokemón</label>
+                                                <label class="yellow-text"for="pesquisaPokemon">Qual Pokémon?</label>
                                             </div>
                                             <a class="waves-effect amber darken-4 btn-small yellow-text"
                                                 id="btnPesquisaPokemon" onclick="dadosParaPesquisa()">Ok</a>
@@ -57,16 +56,14 @@
                         <h3 id="nomePokemon" class="center nomePokemon blue-text text-lighten-5">Pikachu</h3>
                         <br>
                         <ul class="descricaoPokemon white-text">
-                            <li id="tipo" class="light">
-                                TIPO: Eletric
-                            </li>
-                            <li id="habilidade" class="light">HABILIDADE: static,lightning-rod</li>
-                            <li id="danosDF" class="light">DOUBLE DAMAGE FROM: ground</li>
-                            <li id="danosDT" class="light">DOUBLE DAMAGE TO: flying, water</li>
-                            <li id="danosHF" class="light">HALF DAMAGE FROM: flying, steel, electric</li>
-                            <li id="danosHT" class="light">HALF DAMAGE TO: grass, electric, dragon</li>
-                            <li id="noDanosF" class="light">NO DAMAGE FROM:</li>
-                            <li id="noDanosT" class="light">NO DAMAGE TO:  ground</li>
+                            <li class="light"> Tipo: <span id="tipo" class="yellow-text">Eletric</span>
+                            <li class="light">Habilidade: <span id="habilidade" class="yellow-text">static,lightning-rod </span></li>
+                            <li class="light">Double Damage From: <span id="danosDF" class="yellow-text"> ground</span></li>
+                            <li class="light">Double Damage To: <span id="danosDT" class="yellow-text">flying, water</span></li>
+                            <li class="light">Half Damage From: <span  id="danosHF" class="yellow-text"> flying, steel, electric</span></li>
+                            <li class="light">Half Damage To: <span id="danosHT" class="yellow-text">grass, electric, dragon</span></li>
+                            <li class="light">No Damage From: <span id="noDanosF" class="yellow-text"></span></li>
+                            <li class="light">No Damage To: <span id="noDanosT" class="yellow-text"> ground</span></li>
                         </ul>
 
                     </div>
@@ -75,13 +72,13 @@
                 <div class="col s12 m6">
                     <div class="icon-block">
                         <div class="row">
-                            <div class="col s12 m11">
+                            <div class="col s11 m11">
                                 <div class="card img-pokemons">
                                     <div class="card-image">
-                                        <img id="pokemonImg" src="./img/pikachu.png">
+                                        <img id="pokemonImg"  class="materialboxed" width="650" src="./img/pikachu.png">
                                         <span id="pokeId" class="card-title black-text">25</span>
-                                        <a class="btn-floating halfway-fab waves-effect waves-light red"><i
-                                                class="material-icons">add</i></a>
+                                        <!-- <a class="btn-floating halfway-fab waves-effect waves-light red"><i
+                                                class="material-icons">add</i></a> -->
                                     </div>
                                     <div class="card-content" id="descricao">
                                         <p>All other Pokémon's single-target electric-type moves are redirected to this

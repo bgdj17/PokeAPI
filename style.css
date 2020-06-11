@@ -6,7 +6,8 @@ body{
     background-image: url(./img/420248.jpg);
     background-position: bottom;
     letter-spacing: 1px;
-    font-size: 1.2em;       
+  
+    font-family: 'Balsamiq Sans', cursive;
 }
 h6{
     line-height: 1em
@@ -14,6 +15,22 @@ h6{
 .laranja{
     background-color: rgb(255, 115, 0);
     border-radius: 1em;
+    padding-left: 3%;
+}
+.nav-wrapper {
+    border-radius: 1em;
+    padding-bottom: 3%;
+    padding-left: 3%;
+}
+
+nav{
+    border-radius: 1em;
+    margin-top: 2%;
+}
+.label{
+    padding: 2%;
+    box-sizing: border-box;
+    font-size: 2em;
 }
 .img-pokemons{
     border-radius: 1em;
@@ -35,6 +52,7 @@ input{
 }
 .img-pokemons{
     font-family: 'Changa', sans-serif;
+    
 }
 
 li{
