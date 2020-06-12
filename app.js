@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
 function dadosParaPesquisa() {
     var pesquisaPokemon = document.getElementById('pesquisaPokemon').value;
     if(pesquisaPokemon >807){
-        alert('Digite um número entre 1 à 807.')
+        alert('Digite um número entre 1 a 807.')
     }
     var pokeDescHab = ''
     var idPokemon = ''
