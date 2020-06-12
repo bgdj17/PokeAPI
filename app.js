@@ -18,11 +18,15 @@ document.addEventListener('DOMContentLoaded', function () {
     var elems = document.querySelectorAll('.autocomplete');
     var instances = M.Autocomplete.init(elems, { data: pokeImagens });
 })
-// ----
+// 
 function dadosParaPesquisa() {
     var pesquisaPokemon = document.getElementById('pesquisaPokemon').value;
+    if(pesquisaPokemon >807){
+        alert('Digite um número entre 1 à 807.')
+    }
     var pokeDescHab = ''
     var idPokemon = ''
+    
     // Autocomplete
     axios.get(`https://pokeapi.co/api/v2/pokemon/${pesquisaPokemon.toLowerCase()}`)
         .then((resposta) => {
@@ -78,6 +82,7 @@ function dadosParaPesquisa() {
                             }
                         var doubleDamageFromNameJoin = doubleDamageFromName.join(', ')
                         mostrarDanos(doubleDamageFromNameJoin, "danosDF")
+                        
                         // -------
                         var doubleDamageTo = resposta.data.damage_relations.double_damage_to
                         for (var i = 0; i < doubleDamageTo.length; i++) {
@@ -85,6 +90,7 @@ function dadosParaPesquisa() {
                         } 
                         var doubleDamageToResultJoin = doubleDamageToResult.join(', ')
                         mostrarDanos(doubleDamageToResultJoin, "danosDT")
+                        
                         // ------                
                         var halfDamageFrom = resposta.data.damage_relations.half_damage_from
                         for (var i = 0; i < halfDamageFrom.length; i++) {
@@ -124,7 +130,7 @@ function dadosParaPesquisa() {
 }
 function mostrarNoDoc(nome, tipo, habilidade, id) {
     var caminhoNome = document.getElementById("nomePokemon")
-    caminhoNome.innerHTML = `<h3>${capitalize(nome)}</h3>`
+    caminhoNome.innerHTML = `<h4>${capitalize(nome)}</h4>`
     var caminhoTipo = document.getElementById("tipo")
     caminhoTipo.innerHTML = `${tipo}`
     var caminhoHabilidade = document.getElementById("habilidade")
