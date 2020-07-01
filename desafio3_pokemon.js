@@ -3,68 +3,70 @@ const axios = require("axios")
 const fs = require('fs')
 var pesquisaPokemon = rs.question("Digite o nome  ou numero do Pokemón > ")
 var pokemon = {}
-
 async function pegarHabilidade(data) {
-    var pokeHabilidades = data.abilities
-    var habilidades = []
-    var habilidadesUrl = []
-    var pokeDescHab = ''
-    for (let i = 0; i < pokeHabilidades.length; i++) {
-        habilidades.push(pokeHabilidades[i].ability.name)
-        habilidadesUrl.push(pokeHabilidades[i].ability.url)
+    var pokeHabilidades = data.abilities;
+    var habilidades = [];
+    var habilidadesUrl = [];
+    pokeHabilidades.forEach(element => {
+        habilidades.push(element.ability.name)
         pokemon.habilidades = habilidades
-        var resposta = await axios.get(habilidadesUrl[i])
-        pokeDescHab = resposta.data.effect_entries
-        if (pokeDescHab[0].language.name == 'en') {
-            pokemon.descricaoHabilidades = pokeDescHab[0].effect
-        }
-        else {
-            pokemon.descricaoHabilidades = pokeDescHab[1].effect
-        }
-    }
+        habilidadesUrl.push(axios.get(element.ability.url))
+        pokemon.habilidadesUrl = habilidadesUrl
+    });
+    await pegarDescricaoHabilidade(pokemon.habilidadesUrl)
 }
-async function pegarTipoEDano(data) {
+async function pegarDescricaoHabilidade(habilidadesUrl) {
+    await Promise.all(habilidadesUrl).then(responses => {
+        responses.forEach(response => {
+            const resposta = response.data.effect_entries;
+            if (resposta[0].language.name == 'en') pokemon.descricaoHabilidades = resposta[0].effect
+            else pokemon.descricaoHabilidades = resposta[1].effect
+        })
+    })
+}
+async function pegarTipo(data) {
     var pokeTipo = data.types
     var tipo = []
     var tipoUrl = []
-    var doubleDamageFromName = []
-    var doubleDamageToResult = []
-    var halfDamageFromResult = []
-    var halfDamageToResult = []
-    var noDamageFromResult = []
-    var noDamageToResult = []
-    for (var i = 0; i < pokeTipo.length; i++) {
-        tipo.push(pokeTipo[i].type.name)
+    pokeTipo.forEach(element => {
+        tipo.push(element.type.name)
+        tipoUrl.push(axios.get(element.type.url))
         pokemon.tipo = tipo
-        tipoUrl.push(pokeTipo[i].type.url)
-        var resposta = await axios.get(tipoUrl[i])
-        var doubleDamageFrom = resposta.data.damage_relations.double_damage_from
-        doubleDamageFrom.forEach(element => doubleDamageFromName.push(element.name));
-        pokemon.doubleDamageFrom = doubleDamageFromName
-        // -------
-        var doubleDamageTo = resposta.data.damage_relations.double_damage_to
-        doubleDamageTo.forEach(element => doubleDamageToResult.push(element.name));
-        pokemon.doubleDamageTo = doubleDamageToResult
-        // ------                
-        var halfDamageFrom = resposta.data.damage_relations.half_damage_from
-        halfDamageFrom.forEach(element => halfDamageFromResult.push(element.name));
-        pokemon.halfDamageFrom = halfDamageFromResult
-        // -------
-        var halfDamageTo = resposta.data.damage_relations.half_damage_to
-        halfDamageTo.forEach(element => halfDamageToResult.push(element.name));
-        pokemon.halfDamageTo = halfDamageToResult
-        // ------
-        var noDamageFrom = resposta.data.damage_relations.no_damage_from
-        noDamageFrom.forEach(element => noDamageFromResult.push(element.name));
-        pokemon.noDamageFrom = noDamageFromResult
-        // ---
-        var noDamageTo = resposta.data.damage_relations.no_damage_to
-        noDamageTo.forEach(element => noDamageToResult.push(element.name));
-        pokemon.noDamageTo = noDamageToResult;
-    }
+    });
+    await pegarDanos(tipoUrl)
 }
-
+async function pegarDanos(tipoUrl) {
+    await Promise.all(tipoUrl).then(responses => {
+        responses.forEach(response => {
+            const respostaDanos = response.data.damage_relations;
+            var doubleDamageFromResult = []
+            var doubleDamageToResult = []
+            var halfDamageFromResult = []
+            var halfDamageToResult = []
+            var noDamageFromResult = []
+            var noDamageToResult = []
+            respostaDanos.double_damage_from.forEach(element => doubleDamageFromResult.push(element.name));
+            pokemon.doubleDamageFrom = doubleDamageFromResult
+            // // -------
+            respostaDanos.double_damage_to.forEach(element => doubleDamageToResult.push(element.name));
+            pokemon.doubleDamageTo = doubleDamageToResult
+            // // ------                
+            respostaDanos.half_damage_from.forEach(element => halfDamageFromResult.push(element.name));
+            pokemon.halfDamageFrom = halfDamageFromResult
+            // // -------
+            respostaDanos.half_damage_to.forEach(element => halfDamageToResult.push(element.name));
+            pokemon.halfDamageTo = halfDamageToResult
+            // // ------
+            respostaDanos.no_damage_from.forEach(element => noDamageFromResult.push(element.name));
+            pokemon.noDamageFrom = noDamageFromResult
+            // // ---
+            respostaDanos.no_damage_to.forEach(element => noDamageToResult.push(element.name));
+            pokemon.noDamageTo = noDamageToResult;
+        })
+    })
+}
 function mostrarResultadoPokemon() {
+    // console.log(JSON.stringify(pokemon,null,2))
     console.log(`NOME: ${pokemon.nome}`)
     console.log('------------------------------')
     console.log(`ID: ${pokemon.id}`)
@@ -88,38 +90,30 @@ function mostrarResultadoPokemon() {
     console.log(`DESCRICAO HABILIDADES: ${pokemon.descricaoHabilidades}`)
     console.log('-----------------------------')
 }
-// function salvarJson(obj) {
-//     var objSerializado = JSON.stringify(obj)
-//     var caminhoArquivo = './pokemon.json'
-//     fs.appendFileSync(caminhoArquivo, objSerializado, err => {
-//         console.log(err)
-//     })
-// }
 async function main() {
     var resposta = await axios.get(`https://pokeapi.co/api/v2/pokemon/${pesquisaPokemon}`)
     var data = resposta.data
     pokemon.nome = resposta.data.name
     pokemon.id = resposta.data.id
     await pegarHabilidade(data)
-    await pegarTipoEDano(data)
+    await pegarTipo(data)
     mostrarResultadoPokemon()
-    opcao = rs.keyInYN('Gostaria de salvar as informações desse Pokemon?')
-    if (opcao) {
-      salvarJson(pokemon)
+    var salvar = rs.keyInYN('Gostaria de salvar as informações desse Pokemon?')
+    if (salvar) {
+        salvarJson(pokemon)
     }
 }
 main()
-
 function leJson() {
     var jsonSerializado = fs.readFileSync('pokedex.json');
     var json = JSON.parse(jsonSerializado);
     return json;
 }
-function salvarJson(obj){
+function salvarJson(obj) {
     var jsonLido = leJson()
-    if(!jsonLido.find(element => element.id == obj.id)){
+    if (!jsonLido.find(element => element.id == obj.id)) {
         jsonLido.push(obj)
-    var jsonSerializado = JSON.stringify(jsonLido);
-    fs.writeFileSync('pokedex.json', jsonSerializado);
+        var jsonSerializado = JSON.stringify(jsonLido);
+        fs.writeFileSync('pokedex.json', jsonSerializado);
     }
 }
