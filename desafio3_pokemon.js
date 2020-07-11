@@ -12,11 +12,12 @@ async function pegarHabilidade(data) {
         habilidades.push(pokeHabilidades[i].ability.name)
         habilidadesUrl.push(pokeHabilidades[i].ability.url)
         pokemon.habilidades = habilidades
-        axios.get(habilidadesUrl[i])
-            .then((resposta) => {
-                pokeDescHab = resposta.data.effect_entries[1].effect
-                pokemon.descricaoHabilidades = pokeDescHab
-            });
+        var respostaApi = await axios.get(habilidadesUrl[i])
+        pokeDescHab = respostaApi.data.effect_entries
+        pokeDescHab.forEach(element => {
+            var descricao = element.effect
+            pokemon.descricaoHabilidades = descricao            
+        });
     }
 }
 function pegarTipo(data) {
