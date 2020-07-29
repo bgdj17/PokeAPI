@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    
+}
+body{
+    font-size: 16px;
+    font-family: sans-serif;
+}
+.container{
+    width: 100%;   
+    background: rgb(255, 115, 0);
+}
+.principal{
+    text-align: center;
+    padding: 1em;
+}
+.inputPesquisa{
+    width: 80%;
+    height: 2.68em;
+    left: 2.12em;
+    top: 2.25em;
+    border-radius: 15px;
+    border-color: transparent;
+    background: rgba(243, 88, 0, 0.38);
+   
+}
+::placeholder{
+    color: yellow;
+    text-align: center;
+
+}
+#nome{
+    color: #FFFFFF;   
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 2.77em;
+    line-height: calc(2.77 *1,5);
+    margin-bottom: 2.5em;
+    margin-top: 0.5em;
+    text-align: center;
+}
+.imgPokemon{
+    position: absolute;
+    width: 16.53em;
+    height: 16em;
+    left: -0.88em;
+    top: 8.44em;
+    
+}
+
+#tipo{   
+    
+    left: 13.87em;
+    top: 12.69em;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1em;
+    line-height: 1.31em;
+    color: #FFFFFF;
+  
+}
+#habilidade{
+  
+    left: 13.87em;
+    top: 12.69em;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: 1.31em;
+    color: #FFFFFF;
+}
+.descricao{
+width: 100%;
+box-sizing: border-box;
+padding: 2em;
+background: #FFFFFF;
+border-radius: 60px 60px 0 0;
+padding-top: 3em;
+}
+#descricaoPokemon{
+box-sizing: border-box;
+
+font-style: normal;
+font-weight: normal;
+font-size: 0.83em;
+line-height: 1.75em;
+text-align: justify;
+color: #000000;
+}
+.damage{
+    margin-top: 1em;
+    width: 100%;
+    left: 1.25em;
+    top: 43.56em;
+    background: rgba(243, 88, 0, 0.29);
+    border-radius: 15px;
+    text-align: center;
+    padding: 1.5em;
+    box-sizing: border-box;
+    color: #585656;
+    
+}
+
+footer{
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;  
+    text-align: center;
+    background: #8ECDE0;
+    padding: 1.5em;
+}
